@@ -10,7 +10,7 @@ const MovieList = () => {
     return (
         <div className='text-center container'>
             <h1 className='text-danger'>Movie List</h1>
-            <table class="table border">
+            <table class="table border table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Movies Name</th>
@@ -21,7 +21,7 @@ const MovieList = () => {
                     {data.map((movie) => (
                         <tr key={movie.id}>
                             <td>
-                                <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
+                                <Link style={{textDecoration:'none'}} to={`/movie/${movie.id}`}>{movie.title}</Link>
                             </td>
                             <td>
                                 {'⭐'.repeat(movie.rating)}
