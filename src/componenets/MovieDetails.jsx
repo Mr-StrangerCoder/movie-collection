@@ -16,9 +16,9 @@ const MovieDetails = () => {
           
       <h1 className="text-warning fw-bold">{movie.title}</h1>
       <hr className="text-white" />
-      <h5 className="text-danger">{'⭐'.repeat(movie.rating)}</h5>
+      <h5 className="text-danger">Rating: {'⭐'.repeat(movie.rating)}</h5>
       <div className="p-5">
-      <p className="text-danger fs-4">{movie.description}</p>
+      <p className="text-white fs-4">{movie.description}</p>
 
       </div>
        <button type="button" onClick={()=>{navigate('/')}} class="btn btn-dark">Back</button>

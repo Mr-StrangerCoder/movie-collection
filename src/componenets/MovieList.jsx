@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import data from '../data'
+// import data from '../data'
 import { Link } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 
-const MovieList = () => {
+const MovieList = ({movies}) => {
     const navigate = useNavigate();
 
 
@@ -18,7 +18,7 @@ const MovieList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((movie) => (
+                    {movies.map((movie) => (
                         <tr key={movie.id}>
                             <td>
                                 <Link style={{textDecoration:'none'}} to={`/movie/${movie.id}`}>{movie.title}</Link>
@@ -32,7 +32,7 @@ const MovieList = () => {
                 </tbody>
             </table>
             <button className='btn btn-primary' onClick={() => {
-                navigate('/AddNewMovie');
+                navigate('/add');
             }}>Add New Movie</button>
         </div>
     )
