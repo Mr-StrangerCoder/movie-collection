@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-// import data from '../data'
+
 import { Link } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 const MovieList = ({movies, setMovies}) => {
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ const MovieList = ({movies, setMovies}) => {
     return (
         <div className='text-center container'>
             <h1 className='text-danger'>Movie List</h1>
-            <table class="table border table-hover">
+            <table class="table border table-dark table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Movies Name</th>
@@ -35,7 +36,7 @@ const MovieList = ({movies, setMovies}) => {
                                 {'⭐'.repeat(movie.rating)}
                                 {'☆'.repeat(5 - movie.rating)}
                             </td>
-                            <td><button onClick={()=>deleteMovie(movie.id)}>delete</button></td>
+                            <td><button className='btn text-danger fs-4' onClick={()=>deleteMovie(movie.id)}><RiDeleteBinLine /></button></td>
                         </tr>
                     ))}
                 </tbody>

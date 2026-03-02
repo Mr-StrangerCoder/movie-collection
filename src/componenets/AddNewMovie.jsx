@@ -18,8 +18,6 @@ const AddNewMovie = ({ movies, setMovies }) => {
         };
 
         setMovies([...movies, newMovie]);
-
-
         navigate('/');
     };
 

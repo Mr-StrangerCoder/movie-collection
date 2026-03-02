@@ -22,10 +22,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MovieList movies={movies} setMovies={setMovies}  />} />
-        <Route
-          path="/add"
-          element={<AddNewMovie movies={movies} setMovies={setMovies} />}
-        />
+        <Route path="/add" element={<AddNewMovie movies={movies} setMovies={setMovies} />}/>
         <Route path='/movie/:id' element={<MovieDetails data={movies} />}></Route>
       </Routes>
     </BrowserRouter>
