@@ -9,14 +9,16 @@ const AddNewMovie = ({ movies, setMovies }) => {
 
     const AddMovie = () => {
 
-        const newMovie = {
-            id: movies.length + 1,
+        
+         const newMovie = {
+            id: Date.now(),
             title: title,
             rating: rating,
             description: disc
         };
 
         setMovies([...movies, newMovie]);
+
 
         navigate('/');
     };

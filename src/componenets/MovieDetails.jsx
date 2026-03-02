@@ -1,13 +1,12 @@
 import { useParams } from "react-router-dom";
-import data from "../data";
 import { useNavigate } from "react-router-dom";
 
 
-const MovieDetails = () => {
+const MovieDetails = ({data}) => {
+
   const { id } = useParams();
   const navigate = useNavigate();
   
-
   const movie = data.find((m)  => m.id === Number(id));
 
   return (

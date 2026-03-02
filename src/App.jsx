@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -9,18 +9,24 @@ import MovieDetails from './componenets/MovieDetails'
 import AddNewMovie from './componenets/AddNewMovie'
 
 function App() {
-  const [movies, setMovies] = useState(moviesData);
-  console.log(movies)
+  const [movies, setMovies] = useState(() => {
+    const saved = localStorage.getItem("movies");
+    return saved ? JSON.parse(saved) : moviesData;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("movies", JSON.stringify(movies));
+  }, [movies]);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MovieList movies={movies} />} />
+        <Route path="/" element={<MovieList movies={movies} setMovies={setMovies}  />} />
         <Route
           path="/add"
           element={<AddNewMovie movies={movies} setMovies={setMovies} />}
         />
-        <Route path='/movie/:id' element={<MovieDetails />}></Route>
+        <Route path='/movie/:id' element={<MovieDetails data={movies} />}></Route>
       </Routes>
     </BrowserRouter>
   )

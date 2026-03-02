@@ -3,8 +3,14 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 
-const MovieList = ({movies}) => {
+const MovieList = ({movies, setMovies}) => {
     const navigate = useNavigate();
+
+    const deleteMovie = (id) => {
+    const updatedMovies = movies.filter((movie) => movie.id !== id);
+    setMovies(updatedMovies);
+    localStorage.setItem("movies", JSON.stringify(updatedMovies));
+};
 
 
     return (
@@ -15,6 +21,8 @@ const MovieList = ({movies}) => {
                     <tr>
                         <th scope="col">Movies Name</th>
                         <th scope="col">Rating</th>
+                        <th scope="col"></th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -27,6 +35,7 @@ const MovieList = ({movies}) => {
                                 {'⭐'.repeat(movie.rating)}
                                 {'☆'.repeat(5 - movie.rating)}
                             </td>
+                            <td><button onClick={()=>deleteMovie(movie.id)}>delete</button></td>
                         </tr>
                     ))}
                 </tbody>
