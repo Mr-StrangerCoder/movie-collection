@@ -5,6 +5,7 @@ import MovieList from './componenets/MovieList'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import MovieDetails from './componenets/MovieDetails'
 import AddNewMovie from './componenets/AddNewMovie'
+import EditMovie from './componenets/editMovie';
 
 function App() {
   const [movies, setMovies] = useState(() => {
@@ -19,9 +20,13 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MovieList movies={movies} setMovies={setMovies}  />} />
-        <Route path="/add" element={<AddNewMovie movies={movies} setMovies={setMovies} />}/>
+        <Route path="/" element={<MovieList movies={movies} setMovies={setMovies} />} />
+        <Route path="/add" element={<AddNewMovie movies={movies} setMovies={setMovies} />} />
         <Route path='/movie/:id' element={<MovieDetails data={movies} />}></Route>
+        <Route
+          path="/edit/:id"
+          element={<EditMovie movies={movies} setMovies={setMovies} />}
+        />
       </Routes>
     </BrowserRouter>
   )
